@@ -16,6 +16,7 @@ match category:
         listItems = 'melees'
     case _:
         print('Not defined (yet)!')
+        input("Press Enter to continue...")
 
 with open('resources/' + listItems + '.txt') as file:
     items = [line.rstrip() for line in file]
