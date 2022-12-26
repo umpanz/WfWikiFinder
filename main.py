@@ -48,6 +48,7 @@ else:
         except ValueError:
             flag = False
             print('Wrong format.')
+            input("Press Enter to continue...")
 
         #Check if entered number is part of generated list
         if flag = True and index > 0 and index <= iterIndex:
