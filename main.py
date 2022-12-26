@@ -51,4 +51,4 @@ else:
         if flag and int(index) > 0 and int(index) < iterIndex:
             webbrowser.open('https://warframe.fandom.com/wiki/' + res[int(index) - 1])
         else:
-            input('Item not defined!}\nPress Enter to continue...')
+            input('Item not defined!\nPress Enter to continue...')
