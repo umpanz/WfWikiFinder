@@ -1,5 +1,6 @@
 import webbrowser
 
+flag = True
 iterIndex: int = 1
 categories = {
     'w' : 'warframes',
@@ -19,12 +20,22 @@ else:
         items = [line.rstrip() for line in file]
 
     print("Which starting letter?")
-    inputStart = str(input().lower())
-    res = [idx for idx in items if idx[0].lower() == inputStart]
+    startingLetter = str(input().lower())
+    res = [idx for idx in items if idx[0].lower() == startingLetter]
     for x in res:
-        print(str(iterIndex) + ": " + x)
+        print(iterIndex + ": " + x)
         iterIndex = iterIndex + 1
 
     print("Which item do you want to display?")
-    index = str(input())
-    webbrowser.open('https://warframe.fandom.com/wiki/' + res[int(index) - 1])
+    index = input()
+    try:
+        int(index)
+    except ValueError:
+        flag = False
+        print('Wrong format.')
+
+    if flag = True and index > 0 and index <= iterIndex:
+        webbrowser.open('https://warframe.fandom.com/wiki/' + res[index - 1])
+    else:
+        print('Item not defined!')
+        input("Press Enter to continue...")
