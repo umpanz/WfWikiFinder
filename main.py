@@ -35,7 +35,7 @@ for i, item in enumerate(res):
 if not res:
     input('No item with matching starting letter found!\nPress Enter to continue...')
     quit()
-
+    
 #Ask for item index from generated item list with starting letter
 print('Which item do you want to display?')
 index = input()
