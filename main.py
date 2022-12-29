@@ -2,7 +2,6 @@ import webbrowser
 
 #Declaring needed variables
 flag = True
-iterIndex: int = 1
 categories = {
     'w' : 'warframes',
     'p' : 'primaries',
@@ -12,32 +11,31 @@ categories = {
 
 #Asking for item category
 print('Looking for a (w)arframe, a (p)rimary weapon, a (s)econdary weapon or a (m)elee weapon?')
-listItems = categories.get(str(input().lower()),0)
+listItems = categories.get(f'{input().lower()}',0)
 
 #Check if item is in available categories
 if listItems == 0:
     input('Not defined (yet)!\nPress Enter to continue...')
 else:
     #Open relevant item list file
-    with open('resources/' + listItems + '.txt') as file:
+    with open(f'resources/{listItems}.txt') as file:
         items = [line.rstrip() for line in file]
 
     #Ask for item starting letter
-    print("Which starting letter?")
-    startingLetter = str(input().lower())
+    print('Which starting letter?')
+    startingLetter = f'{input().lower()}'
 
     #Get all items with starting letter from file and put them into list
     res = [idx for idx in items if idx[0].lower() == startingLetter]
-    for x in res:
-        print(str(iterIndex) + ": " + x)
-        iterIndex = iterIndex + 1
+    for i, item in enumerate(res):
+        print(f'{i}: {item}')
 
     #Check if items were found
-    if iterIndex == 1:
+    if not res:
         input('No item with matching starting letter found!\nPress Enter to continue...')
     else:
         #Ask for item index from generated item list with starting letter
-        print("Which item do you want to display?")
+        print('Which item do you want to display?')
         index = input()
 
         #Check if number was entered
@@ -49,6 +47,6 @@ else:
             quit()
         #Check if entered number is part of generated list
         if flag and int(index) > 0 and int(index) < iterIndex:
-            webbrowser.open('https://warframe.fandom.com/wiki/' + res[int(index) - 1])
+            webbrowser.open(f'https://warframe.fandom.com/wiki/{res[int(index) - 1]}')
         else:
             input('Item not defined!\nPress Enter to continue...')
